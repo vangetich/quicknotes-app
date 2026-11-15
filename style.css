@@ -1,0 +1,258 @@
+/* QuickNotes — responsive application styles */
+
+/* 1. Global reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #222;
+  line-height: 1.5;
+}
+
+/* 2. Header and navigation */
+header {
+  background-color: #8e0000;
+  color: #fff;
+  text-align: center;
+  padding: 24px 16px;
+}
+
+header h1 { margin: 0 0 6px; }
+header p { margin: 0 0 14px; }
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:hover { text-decoration: underline; }
+
+/* 3. Main content and sections */
+main {
+  width: min(100% - 32px, 720px);
+  flex: 1;
+  margin: 28px auto;
+}
+
+section {
+  background: #fff;
+  padding: 22px;
+  border-radius: 10px;
+  margin-bottom: 22px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+section h2 { margin-top: 0; }
+
+/* 4. Form layout with Flexbox */
+#note-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+#note-form label {
+  flex: 0 0 100%;
+  font-weight: 600;
+}
+
+#note-input,
+#note-category,
+#search-input {
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid #c9ced6;
+  border-radius: 6px;
+  background: #fff;
+  color: #222;
+  font: inherit;
+}
+
+#note-input { flex: 1 1 220px; }
+#note-category { flex: 1 1 150px; }
+#search-input {
+  width: 100%;
+  margin: 6px 0 12px;
+}
+
+#note-input:focus,
+#note-category:focus,
+#search-input:focus {
+  outline: 2px solid #0ba184;
+  outline-offset: 2px;
+}
+
+/* 5. Buttons and hover feedback */
+button {
+  border: 0;
+  border-radius: 6px;
+  padding: 10px 18px;
+  background-color: #0ba184;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+button:hover {
+  background-color: #087f69;
+  transform: translateY(-1px);
+}
+
+button:focus-visible {
+  outline: 3px solid #222;
+  outline-offset: 2px;
+}
+
+.note-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+#clear-btn,
+.delete-btn { background-color: #8e0000; }
+
+#clear-btn:hover,
+.delete-btn:hover { background-color: #6b0000; }
+
+.delete-btn {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+}
+
+/* 6. Notes list and note cards */
+#notes-list {
+  list-style: none;
+  margin: 12px 0;
+  padding: 0;
+}
+
+.note {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  margin: 0 0 12px;
+  border: 1px solid #e0e3e8;
+  border-left: 5px solid #0ba184;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow-wrap: anywhere;
+}
+
+.note-content { flex: 1; min-width: 0; }
+
+.note-category {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* 7. Category-specific styles.
+   Add the matching class to each .note element in script.js. */
+.note.personal {
+  background-color: #fff8e8;
+  border-left-color: #d99a22;
+}
+
+.note.work {
+  background-color: #eef5ff;
+  border-left-color: #3976c5;
+}
+
+.note.ideas {
+  background-color: #f5efff;
+  border-left-color: #8754bd;
+}
+
+.note.study {
+  background-color: #eaf8f1;
+  border-left-color: #27865b;
+}
+
+/* 8. Counters and validation feedback */
+#note-count,
+#word-count,
+#char-count {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+#error-message {
+  min-height: 1.5em;
+  margin: 10px 0 0;
+  color: #b42318;
+  font-weight: 600;
+}
+
+/* 9. Footer */
+footer {
+  margin-top: auto;
+  padding: 18px 16px;
+  background: #e9edf1;
+  color: #666;
+  text-align: center;
+}
+
+footer p { margin: 0; }
+
+/* 10. Small-screen layout */
+@media (max-width: 600px) {
+  header { padding: 20px 14px; }
+
+  main {
+    width: min(100% - 20px, 720px);
+    margin: 18px auto;
+  }
+
+  section { padding: 16px; }
+
+  #note-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #note-input,
+  #note-category,
+  #note-form button {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .note {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .delete-btn { align-self: flex-end; }
+
+  .note-actions { flex-direction: column; }
+  .note-actions button { width: 100%; }
+}

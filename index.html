@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickNotes</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>QuickNotes</h1>
+    <p><u>Capture ideas before they disappear.</u></p>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="add-note-heading">
+      <h2 id="add-note-heading">Add a note</h2>
+
+      <form id="note-form">
+        <label for="note-input">New note</label>
+        <input
+          type="text"
+          id="note-input"
+          name="note"
+          placeholder="Type a note..."
+          required
+        >
+
+        <label for="note-category">Category</label>
+        <select id="note-category" name="category">
+          <option value="personal">Personal</option>
+          <option value="work">Work</option>
+          <option value="ideas">Ideas</option>
+          <option value="study">Study</option>
+        </select>
+
+        <button type="submit">Add Note</button>
+      </form>
+
+      <p id="error-message" role="alert" aria-live="polite"></p>
+    </section>
+
+    <section aria-labelledby="your-notes-heading">
+      <h2 id="your-notes-heading">Your notes</h2>
+
+      <label for="search-input">Search notes</label>
+      <input
+        type="search"
+        id="search-input"
+        placeholder="Search your notes..."
+      >
+
+      <p id="note-count" aria-live="polite">You have 0 notes.</p>
+      <p id="word-count">Total words: 0</p>
+      <p id="char-count">Total characters: 0</p>
+
+      <ul id="notes-list"></ul>
+
+      <div class="note-actions">
+        <button type="button" id="clear-btn">Clear All Notes</button>
+        <button type="button" id="theme-toggle">Toggle Theme</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 QuickNotes. Built during Web Foundations.</p>
+  </footer>
+</body>
+</html>
